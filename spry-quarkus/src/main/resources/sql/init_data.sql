@@ -55,15 +55,24 @@ INSERT INTO t_user_role (user_id, role_id, remark)
 -- ----------------------------
 -- 6. DictType
 -- ----------------------------
+ALTER TABLE t_dict_type AUTO_INCREMENT=10000;
 INSERT INTO t_dict_type (id, name, code, created_at, status, remark)
     VALUE (1, '用户性别', 'sys_user_sex', sysdate(), 0, '用户性别列表');
 
 -- ----------------------------
 -- 7. DictData
 -- ----------------------------
+ALTER TABLE t_dict_data AUTO_INCREMENT=10000;
 INSERT INTO t_dict_data (id, name, code, type, created_at, status, remark)
     VALUE (1, '男', '1', 'sys_user_sex', sysdate(), 0, '性别-男');
 INSERT INTO t_dict_data (id, name, code, type, created_at, status, remark)
     VALUE (2, '女', '2', 'sys_user_sex', sysdate(), 0, '性别-女');
 INSERT INTO t_dict_data (id, name, code, type, created_at, status, remark)
     VALUE (3, '未知', '3', 'sys_user_sex', sysdate(), 0, '性别-未知');
+
+-- ----------------------------
+-- 8. Config
+-- ----------------------------
+ALTER TABLE t_config AUTO_INCREMENT=10000;
+INSERT INTO t_config (id, name, code, value, type, created_at, status, remark)
+    VALUE (1, '用户管理-初始密码', 'sys.user.initPassword', '123456', 'Y', sysdate(), 0, '用户管理-初始密码');

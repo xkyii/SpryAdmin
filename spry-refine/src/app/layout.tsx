@@ -17,6 +17,7 @@ import RowingIcon from '@mui/icons-material/Rowing';
 import AdminPanelSettingsIcon from '@mui/icons-material/AdminPanelSettings';
 import LibraryBooksIcon from '@mui/icons-material/LibraryBooks';
 import MenuBookIcon from '@mui/icons-material/MenuBook';
+import SettingsIcon from '@mui/icons-material/Settings';
 
 export const metadata: Metadata = {
   title: "Spry",
@@ -121,6 +122,18 @@ export default function RootLayout({
                           hide: true,
                           label: "字典数据",
                           icon: <MenuBookIcon />,
+                        },
+                      },
+                      {
+                        name: "config",
+                        list: "/config",
+                        create: "/config/create",
+                        edit: "/config/edit/:id",
+                        show: "/config/show/:id",
+                        meta: {
+                          canDelete: true,
+                          label: "配置",
+                          icon: <SettingsIcon />,
                         },
                       },
                     ]}
