@@ -18,6 +18,7 @@ import AdminPanelSettingsIcon from '@mui/icons-material/AdminPanelSettings';
 import LibraryBooksIcon from '@mui/icons-material/LibraryBooks';
 import MenuBookIcon from '@mui/icons-material/MenuBook';
 import SettingsIcon from '@mui/icons-material/Settings';
+import ComputerIcon from '@mui/icons-material/Computer';
 
 export const metadata: Metadata = {
   title: "Spry",
@@ -52,12 +53,21 @@ export default function RootLayout({
                     authProvider={authProvider}
                     resources={[
                       {
+                        name: "system",
+                        meta: {
+                          canDelete: true,
+                          label: "系统管理",
+                          icon: <ComputerIcon />,
+                        },
+                      },
+                      {
                         name: "dept",
                         list: "/dept",
                         create: "/dept/create",
                         edit: "/dept/edit/:id",
                         show: "/dept/show/:id",
                         meta: {
+                          parent: "system",
                           canDelete: true,
                           label: "部门",
                           icon: <GroupIcon />,
@@ -70,6 +80,7 @@ export default function RootLayout({
                         edit: "/user/edit/:id",
                         show: "/user/show/:id",
                         meta: {
+                          parent: "system",
                           canDelete: true,
                           label: "用户",
                           icon: <PersonIcon />,
@@ -82,6 +93,7 @@ export default function RootLayout({
                         edit: "/role/edit/:id",
                         show: "/role/show/:id",
                         meta: {
+                          parent: "system",
                           canDelete: true,
                           label: "角色",
                           icon: <RowingIcon />,
@@ -94,6 +106,7 @@ export default function RootLayout({
                         edit: "/permission/edit/:id",
                         show: "/permission/show/:id",
                         meta: {
+                          parent: "system",
                           canDelete: true,
                           label: "权限",
                           icon: <AdminPanelSettingsIcon />,
@@ -106,6 +119,7 @@ export default function RootLayout({
                         edit: "/dict-type/edit/:id",
                         show: "/dict-type/show/:id",
                         meta: {
+                          parent: "system",
                           canDelete: true,
                           label: "字典",
                           icon: <LibraryBooksIcon />,
@@ -118,6 +132,7 @@ export default function RootLayout({
                         edit: "/dict-data/edit/:id",
                         show: "/dict-data/show/:id",
                         meta: {
+                          parent: "system",
                           canDelete: true,
                           hide: true,
                           label: "字典数据",
@@ -131,6 +146,7 @@ export default function RootLayout({
                         edit: "/config/edit/:id",
                         show: "/config/show/:id",
                         meta: {
+                          parent: "system",
                           canDelete: true,
                           label: "配置",
                           icon: <SettingsIcon />,
