@@ -8,10 +8,13 @@ import {
   ShowButton,
   useDataGrid,
 } from "@refinedev/mui";
+import Button from "@mui/material/Button";
 import React from "react";
+import { useGo } from "@refinedev/core";
 
 export default function DictTypeList() {
   const { dataGridProps } = useDataGrid({});
+  const go = useGo();
 
   const columns = React.useMemo<GridColDef[]>(
     () => [
@@ -32,6 +35,24 @@ export default function DictTypeList() {
         flex: 1,
         headerName: "字典类型代码",
         minWidth: 200,
+        renderCell: row => (
+          <Button sx={{ textTransform: "none" }}
+            onClick={() => go({
+              to: "dict-data",
+              type: "push",
+              query: {
+                filters: [
+                  {
+                    field: "type",
+                    operator: "eq",
+                    value: row.row.code,
+                  }
+                ]
+              }
+            })}>
+            {row.row.code}
+          </Button>
+        ),
       },
       {
         field: "actions",
