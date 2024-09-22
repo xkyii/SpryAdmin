@@ -1,6 +1,7 @@
 "use client";
 
 import { DataGrid, GridColDef } from "@mui/x-data-grid";
+import { useNavigation } from "@refinedev/core";
 import {
   DeleteButton,
   EditButton,
@@ -13,6 +14,7 @@ import React from "react";
 import { useGo } from "@refinedev/core";
 
 export default function DictTypeList() {
+  const { list } = useNavigation();
   const { dataGridProps } = useDataGrid({});
   const go = useGo();
 
@@ -62,6 +64,19 @@ export default function DictTypeList() {
           return (
             <>
               <EditButton hideText recordItemId={row.id} />
+              <button onClick={() => list("dept", "push", {
+                filters: [
+                  {
+                    field: "status.text",
+                    operator: "eq",
+                    value: "On The Way",
+                  },
+                ],
+                pagination: {
+                  pageSize: 1000,
+                },
+              }
+              )}>xxx</button>
               <ShowButton hideText recordItemId={row.id} />
               <DeleteButton hideText recordItemId={row.id} />
             </>
