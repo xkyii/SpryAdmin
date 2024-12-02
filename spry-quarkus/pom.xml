@@ -6,17 +6,17 @@
   <artifactId>spry-quarkus</artifactId>
   <version>1.0.0-SNAPSHOT</version>
   <properties>
-    <compiler-plugin.version>3.12.1</compiler-plugin.version>
+    <skipITs>true</skipITs>
     <maven.compiler.release>21</maven.compiler.release>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
     <quarkus.platform.artifact-id>quarkus-bom</quarkus.platform.artifact-id>
     <quarkus.platform.group-id>io.quarkus.platform</quarkus.platform.group-id>
-    <quarkus.platform.version>3.11.0</quarkus.platform.version>
-    <skipITs>true</skipITs>
-    <surefire-plugin.version>3.2.5</surefire-plugin.version>
+    <quarkus.platform.version>3.17.0</quarkus.platform.version>
+    <compiler-plugin.version>3.13.0</compiler-plugin.version>
+    <surefire-plugin.version>3.5.0</surefire-plugin.version>
+    <xkyss-quarkus.version>1.24.2</xkyss-quarkus.version>
     <mapstruct.version>1.5.5.Final</mapstruct.version>
-    <xkyss.version>1.24.1</xkyss.version>
   </properties>
   <dependencyManagement>
     <dependencies>
@@ -24,6 +24,14 @@
         <groupId>${quarkus.platform.group-id}</groupId>
         <artifactId>${quarkus.platform.artifact-id}</artifactId>
         <version>${quarkus.platform.version}</version>
+        <type>pom</type>
+        <scope>import</scope>
+      </dependency>
+
+      <dependency>
+        <groupId>com.xkyss</groupId>
+        <artifactId>xkyss-quarkus-bom</artifactId>
+        <version>${xkyss-quarkus.version}</version>
         <type>pom</type>
         <scope>import</scope>
       </dependency>
@@ -81,7 +89,10 @@
     <dependency>
       <groupId>com.xkyss</groupId>
       <artifactId>xkyss-core</artifactId>
-      <version>${xkyss.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>com.xkyss</groupId>
+      <artifactId>xkyss-quarkus-rest</artifactId>
     </dependency>
     <!-- apache commons -->
     <dependency>
