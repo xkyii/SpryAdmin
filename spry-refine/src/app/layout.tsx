@@ -47,6 +47,7 @@ export default function RootLayout({
               <RefineSnackbarProvider>
                 <DevtoolsProvider>
                   <Refine
+                    options={{syncWithLocation: true}}
                     routerProvider={routerProvider}
                     dataProvider={{ default: restDataProvider, fake: fakeDataProvider }}
                     notificationProvider={useNotificationProvider}
