@@ -41,3 +41,4 @@ spry-admin/quarkus.log
 spry-admin/.mvn
 spry-refine/bun.lockb
 .quarkus
+.tmp
