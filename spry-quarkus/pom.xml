@@ -16,6 +16,7 @@
         <quarkus.platform.version>3.17.2</quarkus.platform.version>
         <surefire-plugin.version>3.5.0</surefire-plugin.version>
         <xkyss-quarkus.version>1.24.2</xkyss-quarkus.version>
+        <mapstruct.version>1.5.3.Final</mapstruct.version>
     </properties>
 
     <dependencyManagement>
@@ -45,7 +46,23 @@
         </dependency>
         <dependency>
             <groupId>io.quarkus</groupId>
-            <artifactId>quarkus-rest</artifactId>
+            <artifactId>quarkus-smallrye-jwt</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>io.quarkus</groupId>
+            <artifactId>quarkus-smallrye-jwt-build</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>io.quarkus</groupId>
+            <artifactId>quarkus-hibernate-orm-rest-data-panache</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>io.quarkus</groupId>
+            <artifactId>quarkus-hibernate-orm-panache</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>io.quarkus</groupId>
+            <artifactId>quarkus-jdbc-mysql</artifactId>
         </dependency>
         <dependency>
             <groupId>io.quarkus</groupId>
@@ -60,7 +77,16 @@
         <!-- xkyss -->
         <dependency>
             <groupId>com.xkyss</groupId>
+            <artifactId>xkyss-core</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.xkyss</groupId>
             <artifactId>xkyss-quarkus-rest</artifactId>
+        </dependency>
+        <!-- mapstruct -->
+        <dependency>
+            <groupId>org.mapstruct</groupId>
+            <artifactId>mapstruct</artifactId>
         </dependency>
     </dependencies>
 
@@ -87,6 +113,16 @@
                 <version>${compiler-plugin.version}</version>
                 <configuration>
                     <parameters>true</parameters>
+                    <compilerArgs>
+                        <arg>-parameters</arg>
+                    </compilerArgs>
+                    <annotationProcessorPaths>
+                        <path>
+                            <groupId>org.mapstruct</groupId>
+                            <artifactId>mapstruct-processor</artifactId>
+                            <version>${mapstruct.version}</version>
+                        </path>
+                    </annotationProcessorPaths>
                 </configuration>
             </plugin>
             <plugin>
