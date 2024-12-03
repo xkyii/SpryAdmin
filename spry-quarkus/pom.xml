@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
-    <groupId>org.acme</groupId>
-    <artifactId>code-with-quarkus</artifactId>
-    <version>1.0.0-SNAPSHOT</version>
+    <groupId>com.xkyii</groupId>
+    <artifactId>spry-quarkus</artifactId>
+    <version>1.24.2</version>
 
     <properties>
         <skipITs>true</skipITs>
@@ -15,6 +15,7 @@
         <quarkus.platform.group-id>io.quarkus.platform</quarkus.platform.group-id>
         <quarkus.platform.version>3.17.2</quarkus.platform.version>
         <surefire-plugin.version>3.5.0</surefire-plugin.version>
+        <xkyss-quarkus.version>1.24.2</xkyss-quarkus.version>
     </properties>
 
     <dependencyManagement>
@@ -26,10 +27,18 @@
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
+            <dependency>
+                <groupId>com.xkyss</groupId>
+                <artifactId>xkyss-quarkus-bom</artifactId>
+                <version>${xkyss-quarkus.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
         </dependencies>
     </dependencyManagement>
 
     <dependencies>
+        <!-- quarkus -->
         <dependency>
             <groupId>io.quarkus</groupId>
             <artifactId>quarkus-arc</artifactId>
@@ -47,6 +56,11 @@
             <groupId>io.rest-assured</groupId>
             <artifactId>rest-assured</artifactId>
             <scope>test</scope>
+        </dependency>
+        <!-- xkyss -->
+        <dependency>
+            <groupId>com.xkyss</groupId>
+            <artifactId>xkyss-quarkus-rest</artifactId>
         </dependency>
     </dependencies>
 
