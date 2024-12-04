@@ -1,2 +1,2 @@
-export * from "./pseu-auth-provider";
-export * from "./rest-auth-provider";
+export * from "./pseu";
+export * from "./rest";
