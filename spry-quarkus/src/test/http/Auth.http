@@ -1,0 +1,13 @@
+
+### hello
+GET {{url}}/api/auth/hello
+Content-Type: */*
+
+### login
+POST {{url}}/api/auth/login
+Content-Type: application/json
+
+{
+  "email": "demo@xkyii.com",
+  "password": "demo123"
+}

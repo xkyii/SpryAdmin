@@ -1,0 +1,4 @@
+
+### hello
+GET {{url}}/public/hello
+Content-Type: */*

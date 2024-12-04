@@ -1,8 +1,9 @@
 import type { AuthProvider } from "@refinedev/core";
 
-export const TOKEN_KEY = "refine-auth";
+const TOKEN_KEY = "refine-auth";
+export const PSEU_TOKEN_KEY = TOKEN_KEY;
 
-export const authProvider: AuthProvider = {
+export const pseuAuthProvider: AuthProvider = {
   login: async ({ username, email, password }) => {
     if ((username || email) && password) {
       localStorage.setItem(TOKEN_KEY, username);
