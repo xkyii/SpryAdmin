@@ -2,6 +2,7 @@ import { DataProvider, } from "@refinedev/core";
 import type { AxiosInstance } from "axios";
 import axios from "axios";
 import { stringify } from "query-string";
+import Cookies from "js-cookie";
 
 type MethodTypes = "get" | "delete" | "head" | "options";
 type MethodTypesWithBody = "post" | "put" | "patch";
@@ -20,19 +21,20 @@ export const restDataProvider: DataProvider = {
     getList: async ({ resource, pagination, sorters, filters, meta }) => {
         const url = `${API_URL}/${resource}`;
 
-        const { current = 1, pageSize = 10, mode = "server" } = pagination ?? {};
+        const { current = 1, pageSize = 10 } = pagination ?? {};
         const { headers: headersFromMeta, method } = meta ?? {};
         const requestMethod = (method as MethodTypes) ?? "get";
+        const headersExtra = {
+          Authorization: `Bearer ${Cookies.get('token')}`
+        }
 
         const query: {
             page?: number;
             size?: number;
         } = {};
 
-        if (mode === "server") {
-            query.page = current - 1;
-            query.size = pageSize;
-        }
+        query.page = current - 1;
+        query.size = pageSize;
 
         const combinedQuery = { ...query, /* ...queryFilters */ };
         const urlWithQuery = Object.keys(combinedQuery).length
@@ -40,7 +42,10 @@ export const restDataProvider: DataProvider = {
           : url;
 
         const { data, headers } = await httpClient[requestMethod](urlWithQuery, {
-            headers: headersFromMeta,
+            headers: {
+              ...headersFromMeta,
+              Authorization: `Bearer ${Cookies.get('token')}`
+             }
           });
 
           const total = +headers["x-total-count"];
@@ -56,7 +61,12 @@ export const restDataProvider: DataProvider = {
         const { headers, method } = meta ?? {};
         const requestMethod = (method as MethodTypes) ?? "get";
 
-        const { data } = await httpClient[requestMethod](url, { headers });
+        const { data } = await httpClient[requestMethod](url, {
+          headers: {
+            ...headers,
+            Authorization: `Bearer ${Cookies.get('token')}`
+           }
+        });
 
         return {
           data,

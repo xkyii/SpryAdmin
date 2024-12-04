@@ -34,6 +34,11 @@ import {
   CategoryList,
   CategoryShow,
 } from "./pages/categories";
+import {
+  UserList,
+  UserShow,
+} from "./pages/user";
+
 import { ForgotPassword } from "./pages/forgotPassword";
 import { Login } from "./pages/login";
 import { Register } from "./pages/register";
@@ -62,6 +67,8 @@ function App() {
                     show: "/blog-posts/show/:id",
                     meta: {
                       canDelete: true,
+                      label: "Blog Posts",
+                      dataProviderName: "pseu",
                     },
                   },
                   {
@@ -72,6 +79,19 @@ function App() {
                     show: "/categories/show/:id",
                     meta: {
                       canDelete: true,
+                      label: "Categories",
+                      dataProviderName: "pseu",
+                    },
+                  },
+                  {
+                    name: "user",
+                    list: "/user",
+                    create: "/user/create",
+                    edit: "/user/edit/:id",
+                    show: "/user/show/:id",
+                    meta: {
+                      canDelete: true,
+                      label: "用户",
                     },
                   },
                 ]}
@@ -110,6 +130,12 @@ function App() {
                       <Route path="create" element={<CategoryCreate />} />
                       <Route path="edit/:id" element={<CategoryEdit />} />
                       <Route path="show/:id" element={<CategoryShow />} />
+                    </Route>
+                    <Route path="/user">
+                      <Route index element={<UserList />} />
+                      <Route path="create" element={<CategoryCreate />} />
+                      <Route path="edit/:id" element={<CategoryEdit />} />
+                      <Route path="show/:id" element={<UserShow />} />
                     </Route>
                     <Route path="*" element={<ErrorComponent />} />
                   </Route>

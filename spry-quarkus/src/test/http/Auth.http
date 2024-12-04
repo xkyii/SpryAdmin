@@ -1,13 +1,21 @@
 
-### hello
-GET {{url}}/api/auth/hello
-Content-Type: */*
 
 ### login
 POST {{url}}/api/auth/login
 Content-Type: application/json
 
 {
-  "email": "demo@xkyii.com",
-  "password": "demo123"
+  "email": "admin@xkyii.com",
+  "password": "admin123"
 }
+
+### hello
+GET {{url}}/api/auth/hello
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+### deny
+GET {{url}}/api/auth/deny
+
+### permit
+GET {{url}}/api/auth/permit
