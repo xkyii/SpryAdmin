@@ -79,7 +79,10 @@ export const restDataProvider: DataProvider = {
         const requestMethod = (method as MethodTypesWithBody) ?? "post";
 
         const { data } = await httpClient[requestMethod](url, variables, {
-          headers,
+          headers: {
+            ...headers,
+            Authorization: `Bearer ${Cookies.get('token')}`
+           },
         });
 
         return {
@@ -93,7 +96,10 @@ export const restDataProvider: DataProvider = {
         const requestMethod = (method as MethodTypesWithBody) ?? "patch";
 
         const { data } = await httpClient[requestMethod](url, variables, {
-          headers,
+          headers: {
+            ...headers,
+            Authorization: `Bearer ${Cookies.get('token')}`
+           },
         });
 
         return {

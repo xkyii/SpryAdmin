@@ -23,21 +23,9 @@ import { restDataProvider, pseuDataProvider } from "./providers/data-provider";
 import { Header } from "./components/header";
 import { ColorModeContextProvider } from "./contexts/color-mode";
 import {
-  BlogPostCreate,
-  BlogPostEdit,
-  BlogPostList,
-  BlogPostShow,
-} from "./pages/blog-posts";
-import {
-  CategoryCreate,
-  CategoryEdit,
-  CategoryList,
-  CategoryShow,
-} from "./pages/categories";
-import {
-  UserList,
-  UserShow,
-} from "./pages/user";
+  BlogPostCreate, BlogPostEdit, BlogPostList, BlogPostShow, } from "./pages/blog-posts";
+import { CategoryCreate, CategoryEdit, CategoryList, CategoryShow, } from "./pages/categories";
+import { UserCreate, UserEdit, UserList, UserShow, } from "./pages/user";
 
 import { ForgotPassword } from "./pages/forgotPassword";
 import { Login } from "./pages/login";
@@ -133,8 +121,8 @@ function App() {
                     </Route>
                     <Route path="/user">
                       <Route index element={<UserList />} />
-                      <Route path="create" element={<CategoryCreate />} />
-                      <Route path="edit/:id" element={<CategoryEdit />} />
+                      <Route path="create" element={<UserCreate />} />
+                      <Route path="edit/:id" element={<UserEdit />} />
                       <Route path="show/:id" element={<UserShow />} />
                     </Route>
                     <Route path="*" element={<ErrorComponent />} />
